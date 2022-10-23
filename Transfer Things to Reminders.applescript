@@ -24,6 +24,11 @@ end tell
 -- Trabsfer list data
 
 tell application "Things3"
+	tell application "Reminders"
+		tell list chosenReminderList
+			show
+		end tell
+	end tell
 	repeat with myList in myLists
 		set myTodos to to dos in myList
 		set myCount to 0
@@ -40,9 +45,7 @@ tell application "Things3"
 			end if
 			set myBody to notes of myTodo
 			tell application "Reminders"
-				show
 				tell list chosenReminderList
-					show
 					make new reminder at end Â
 						with properties {name:myName, body:myBody}
 				end tell
